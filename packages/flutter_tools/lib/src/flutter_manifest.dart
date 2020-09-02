@@ -123,6 +123,9 @@ class FlutterManifest {
     }
   }
 
+  /// The app description from the `pubspec.yaml` file.
+  String get appDescription => _descriptor['description'] as String ?? '';
+
   bool get usesMaterialDesign {
     return _flutterDescriptor['uses-material-design'] as bool ?? false;
   }

@@ -152,6 +152,14 @@ String parsedBuildNumber({
   );
 }
 
+/// App description of the project parsed from manifest.
+String parsedAppDescription({
+  @required FlutterManifest manifest,
+}) {
+  final String appDescription = manifest.appDescription;
+  return appDescription;
+}
+
 /// List of lines of build settings. Example: 'FLUTTER_BUILD_DIR=build'
 List<String> _xcodeBuildSettingsLines({
   @required FlutterProject project,

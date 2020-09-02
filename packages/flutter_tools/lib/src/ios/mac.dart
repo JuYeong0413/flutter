@@ -171,6 +171,14 @@ Future<XcodeBuildResult> buildXcodeProject({
       'file version field before submitting to the App Store.');
   }
 
+  final String appDescription = parsedAppDescription(manifest: manifest);
+  final bool appDescriptionIsDeafult = appDescription.contains('A new Flutter project.') == true || appDescription.isEmpty;
+
+  if (appDescriptionIsDeafult) {
+    globals.printError('Action Required: You must set the app description in the pubspec.yaml '
+      'before submitting to the App Store.');
+  }
+
   Map<String, String> autoSigningConfigs;
   if (codesign && buildForDevice) {
     autoSigningConfigs = await getCodeSigningIdentityDevelopmentTeam(
